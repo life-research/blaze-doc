@@ -14,6 +14,12 @@ The project is currently under active development. Essentially all official [CQL
 
 Latest release: [v0.6](https://github.com/life-research/blaze/releases/tag/v0.6)
 
+## Next Steps
+
+Try out Blaze by following the Quick Start Deployment documentation:
+
+{% page-ref page="deployment/quick-start.md" %}
+
 
 
 

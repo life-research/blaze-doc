@@ -7,6 +7,7 @@
   * [Manual Deployment](deployment/manual-deployment.md)
   * [Environment Variables](deployment/environment-variables.md)
 * [Conformance](conformance.md)
+* [Tooling](tooling.md)
 * [Performance](performance.md)
 * [Implementation](implementation.md)
 * [Database Design](database-design.md)

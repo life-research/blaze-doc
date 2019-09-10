@@ -30,7 +30,7 @@ You can change the data dir in the properties file if you like to have it at a d
 
 #### Blaze
 
-Blaze runs on the JVM and comes as single JAR file. Download the most recent version [here](https://github.com/life-research/blaze/releases/tag/v0.6). Look for `blaze-0.6-standalone.jar`.
+Blaze runs on the JVM and comes as single JAR file. Download the most recent version [here](https://github.com/life-research/blaze/releases/tag/v0.6). Look for `blaze-0.6-standalone.jar`. Blaze requires at least Java 8 and is also tested with Java 11.
 
 After the download, you can start blaze with the following command \(Linux, MacOS\):
 

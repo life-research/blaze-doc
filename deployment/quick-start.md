@@ -14,6 +14,8 @@ docker run -p 8080:8080 liferesearch/blaze:0.6
 
 ### Java
 
+Blaze requires at least Java 8 and is also tested with Java 11.
+
 ```text
 wget https://github.com/life-research/blaze/releases/download/v0.6/blaze-0.6-standalone.jar
 java -jar blaze-0.6-standalone.jar

@@ -6,12 +6,12 @@ The following table constains all of them:
 
 | Name | Default | Since | Description |
 | :--- | :--- | :--- | :--- |
-| DATABASE\_URI | datomic:mem://dev |  | URI of the Datomic database In-memory, volatile by default  |
+| DATABASE\_URI | datomic:mem://dev |  | URI of the Datomic database In-memory, volatile by default |
 | PROXY\_HOST | — | v0.6 | Proxy server for outbound HTTP requests |
 | PROXY\_PORT | — | v0.6 | Port of the proxy server |
-| PROXY\_USER | — | v0.6.1 | Proxy server user, if authentication is needed.  |
+| PROXY\_USER | — | v0.6.1 | Proxy server user, if authentication is needed. |
 | PROXY\_PASSWORD | — | v0.6.1 | Proxy server password, if authentication is needed. |
-| CONNECTION\_TIMEOUT | 2 s | v0.6.3 | connection timeout for outbound HTTP requests |
+| CONNECTION\_TIMEOUT | 5 s | v0.6.3 | connection timeout for outbound HTTP requests |
 | REQUEST\_TIMEOUT | 30 s | v0.6.3 | request timeout for outbound HTTP requests |
 | TERM\_SERVICE\_URI | [http://tx.fhir.org/r4](http://tx.fhir.org/r4) | v0.6 | Base URI of the terminology service |
 | BASE\_URL | [http://localhost:8080](http://localhost:8080) |  | The URL under which Blaze is accessible by clients |

@@ -6,7 +6,7 @@ description: In environments without Docker
 
 The installation should work under Windows, Linux and MacOS. Both Datomic and Blaze need a current Java 8 JRE. Other Versions of Java aren’t currently tested.
 
-#### Datomic
+## Datomic
 
 Blaze needs a [Datomic](https://www.datomic.com/) database to store FHIR® resources. Different editions of Datomic are available. Four our use case, the Free Edition is sufficient.
 
@@ -28,7 +28,7 @@ System started datomic:free://localhost:4334/<DB-NAME>, storing data in: data
 
 You can change the data dir in the properties file if you like to have it at a different location.
 
-#### Blaze
+## Blaze
 
 Blaze runs on the JVM and comes as single JAR file. Download the most recent version [here](https://github.com/life-research/blaze/releases/tag/v0.6.2). Look for `blaze-0.6.2-standalone.jar`. Blaze requires at least Java 8 and is also tested with Java 11.
 

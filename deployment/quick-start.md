@@ -6,13 +6,13 @@ description: Fast non-production Deployment
 
 In order to run Blaze with an in-memory, volatile database, just execute the following:
 
-### Docker
+## Docker
 
-```
+```text
 docker run -p 8080:8080 liferesearch/blaze:0.6.2
 ```
 
-### Java
+## Java
 
 Blaze requires at least Java 8 and is also tested with Java 11.
 

@@ -6,7 +6,7 @@ description: In Docker environments like Docker Compose or Kubernetes
 
 Blaze comes as a web application which needs to access a Datomic database. The most basic production deployment uses a Datomic Free Edition database and a single Blaze instance.
 
-### Network
+## Network
 
 It's best to create a separate Docker network for the communication between Blaze and Datomic.
 
@@ -14,19 +14,19 @@ It's best to create a separate Docker network for the communication between Blaz
 docker network create blaze
 ```
 
-### Datomic Free
+## Datomic Free
 
 A Docker run command for a Datomic Free instance would look like this. Note that there is no volume defined for the actual data. It will be lost on container removal.
 
 ```text
 docker run -d --name db --network blaze -e ALT_HOST=db \
   -e ADMIN_PASSWORD=admin -e DATOMIC_PASSWORD=datomic \
-  akiel/datomic-free:0.9.5703-2 
+  akiel/datomic-free:0.9.5703-2
 ```
 
-### Blaze
+## Blaze
 
-The environment variable `DATABASE_URI` tells Blaze to use the started Datomic database. 
+The environment variable `DATABASE_URI` tells Blaze to use the started Datomic database.
 
 ```text
 docker run -d --name blaze --network blaze \
@@ -55,7 +55,7 @@ Blaze will be configured through environment variables which are documented here
 
 {% page-ref page="environment-variables.md" %}
 
-### Docker Compose
+## Docker Compose
 
 A Docker Compose file with adds a volume for Datomic looks like this:
 
@@ -81,6 +81,4 @@ services:
 volumes:
   db-data:
 ```
-
-
 

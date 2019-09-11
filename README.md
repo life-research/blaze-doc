@@ -20,17 +20,3 @@ Try out Blaze by following the Quick Start Deployment documentation:
 
 {% page-ref page="deployment/quick-start.md" %}
 
-
-
-
-
-
-
-#### 
-
-#### 
-
-
-
-#### 
-

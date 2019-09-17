@@ -31,7 +31,7 @@ The environment variable `DATABASE_URI` tells Blaze to use the started Datomic d
 ```text
 docker run -d --name blaze --network blaze \
   -e DATABASE_URI=datomic:free://db:4334/db?password=datomic \
-  -p 8080:8080 liferesearch/blaze:0.6.2
+  -p 8080:8080 liferesearch/blaze:0.6.4
 ```
 
 Blaze should log something like this:
@@ -71,7 +71,7 @@ services:
     volumes:
     - "db-data:/data"
   store:
-    image: "liferesearch/blaze:0.6.2"
+    image: "liferesearch/blaze:0.6.4"
     environment:
       DATABASE_URI: "datomic:free://db:4334/dev?password=datomic"
     ports:

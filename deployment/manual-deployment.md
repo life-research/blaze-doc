@@ -30,19 +30,19 @@ You can change the data dir in the properties file if you like to have it at a d
 
 ## Blaze
 
-Blaze runs on the JVM and comes as single JAR file. Download the most recent version [here](https://github.com/life-research/blaze/releases/tag/v0.6.2). Look for `blaze-0.6.2-standalone.jar`. Blaze requires at least Java 8 and is also tested with Java 11.
+Blaze runs on the JVM and comes as single JAR file. Download the most recent version [here](https://github.com/life-research/blaze/releases/tag/v0.6.4). Look for `blaze-0.6.4-standalone.jar`. Blaze requires at least Java 8 and is also tested with Java 11.
 
 After the download, you can start blaze with the following command \(Linux, MacOS\):
 
 ```text
-DATABASE_URI=datomic:free://localhost:4334/db java -jar blaze-0.6.2-standalone.jar
+DATABASE_URI=datomic:free://localhost:4334/db java -jar blaze-0.6.4-standalone.jar
 ```
 
 Under Windows you need to set the Environment variables in the PowerShell before starting Blaze:
 
 ```text
 $Env:DATABASE_URI = "datomic:free://localhost:4334/db"
-java -jar blaze-0.6.2-standalone.jar
+java -jar blaze-0.6.4-standalone.jar
 ```
 
 The output should look like this:

@@ -49,17 +49,17 @@ The output should look like this:
 
 ```text
 WARNING: requiring-resolve already refers to: #'clojure.core/requiring-resolve in namespace: datomic.common, being replaced by: #'datomic.common/requiring-resolve
-19-08-28 17:22:35 3962d91052cd INFO [blaze.system:232] - Read structure definitions resulting in: 190 structure definitions
-19-08-28 17:22:37 3962d91052cd INFO [blaze.system:247] - Created database at: datomic:free://localhost:4334/db
-19-08-28 17:22:37 3962d91052cd INFO [blaze.system:250] - Connect with database: datomic:free://localhost:4334/db
-19-08-28 17:22:44 3962d91052cd INFO [blaze.system:241] - Upsert schema in database: datomic:free://localhost:4334/db creating 92290 new facts
-19-08-28 17:22:44 3962d91052cd INFO [blaze.system:259] - Init terminology server connection: http://tx.fhir.org/r4
-19-08-28 17:22:44 3962d91052cd INFO [blaze.system:409] - Start metrics server on port 8081
-19-08-28 17:22:44 3962d91052cd INFO [blaze.system:370] - Start main server on port 8080
-19-08-28 17:22:44 3962d91052cd INFO [blaze.system:225] - Set log level to: info
-19-08-28 17:22:44 3962d91052cd INFO [blaze.core:49] - JVM version: 1.8.0_222
-19-08-28 17:22:44 3962d91052cd INFO [blaze.core:50] - Maximum available memory: 444 MiB
-19-08-28 17:22:44 3962d91052cd INFO [blaze.core:51] - Number of available processors: 2
+19-09-17 16:14:14 <host> INFO [blaze.system:217] - Set log level to: info
+19-09-17 16:14:14 <host> INFO [blaze.system:232] - Read structure definitions resulting in: 190 structure definitions
+19-09-17 16:14:15 <host> INFO [blaze.system:250] - Use existing database at: datomic:free://localhost:4334/dev?password=datomic
+19-09-17 16:14:15 <host> INFO [blaze.system:252] - Connect with database: datomic:free://localhost:4334/dev?password=datomic
+19-09-17 16:14:20 <host> INFO [blaze.system:259] - Init terminology server connection: http://tx.fhir.org/r4
+19-09-17 16:14:20 <host> INFO [blaze.system:367] - Init FHIR RESTful API with base URL: http://localhost:8080/fhir
+19-09-17 16:14:20 <host> INFO [blaze.system:438] - Start metrics server on port 8081
+19-09-17 16:14:20 <host> INFO [blaze.system:395] - Start main server on port 8080
+19-09-17 16:14:20 <host> INFO [blaze.core:49] - JVM version: 1.8.0_221
+19-09-17 16:14:20 <host> INFO [blaze.core:50] - Maximum available memory: 3641 MiB
+19-09-17 16:14:20 <host> INFO [blaze.core:51] - Number of available processors: 8
 ```
 
 In order to test connectivity, query the health endpoint:

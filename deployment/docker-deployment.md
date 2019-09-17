@@ -51,6 +51,27 @@ WARNING: requiring-resolve already refers to: #'clojure.core/requiring-resolve i
 19-08-28 17:22:44 3962d91052cd INFO [blaze.core:51] - Number of available processors: 2
 ```
 
+In order to test connectivity, query the health endpoint:
+
+```text
+curl http://localhost:8080/health
+```
+
+After that please note that the [FHIR RESTful API](https://www.hl7.org/fhir/http.html) is available under `http://localhost:8080/fhir`. A good start is to query the [CapabilityStatement](https://www.hl7.org/fhir/capabilitystatement.html) of Blaze using [jq](https://stedolan.github.io/jq/) to select only the software key of the JSON output:
+
+```text
+curl -H 'Accept:application/fhir+json' -s http://localhost:8080/fhir/metadata | jq .software
+```
+
+that should return:
+
+```json
+{
+  "name": "Blaze",
+  "version": "0.6.4"
+}
+```
+
 Blaze will be configured through environment variables which are documented here:
 
 {% page-ref page="environment-variables.md" %}

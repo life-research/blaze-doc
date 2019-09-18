@@ -6,7 +6,7 @@ description: Useful tooling around Blaze
 
 ## blazectl
 
-Alongside Blaze, there is a command-line tool called blazectl which can be used to control a running Blaze instance. Currently the functionality of blazectl isn't specific to Blaze itself so it can also be used together with other FHIR servers.
+Alongside Blaze, there is a command-line tool called blazectl which can be used to control a running Blaze instance. Currently the functionality of blazectl isn't specific to Blaze itself so it can also be used together with other FHIR® servers.
 
 Blazectl is most suitable to upload transaction bundles to Blaze.
 

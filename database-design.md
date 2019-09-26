@@ -10,13 +10,24 @@ The above table shows one fact, namely that sally likes pizza. A Datomic databas
 
 ## Basic FHIR Resource Representation
 
-In order to represent FHIR resources in Datomic, the [structure definition](http://www.hl7.org/fhir/structuredefinition.html) of each resource is used to generate Datomic schema entities \(attributes\). Each structure definition consists of a list of [element definitions](http://www.hl7.org/fhir/elementdefinition.html#ElementDefinition). Each element definition is translated into one Datomic attribute.
+In order to represent FHIR resources in Datomic, the [structure definition](http://www.hl7.org/fhir/structuredefinition.html) of each resource is used to generate Datomic schema entities \(attributes\). Each structure definition consists of a list of [element definitions](http://www.hl7.org/fhir/elementdefinition.html). Each element definition is translated into mostly one Datomic attribute.
 
-### Primitive Single-Valued Single-Typed Elements
+Two properties of element definitions are relevant for the schema generation, the cardinality and weather it is a choice-typed element or not. The following sections describe the schema elements of the three different combinations of that two properties.
 
-To start with an example, the element definition `Patient.active` is shown below as JSON, stripped from irrelevant properties.
+### Single-Valued Single-Typed Elements
 
-```javascript
+The most basic data elements are single-valued and single-typed. One example is the data element `Patient.active`. A Patient resource with only that data elements looks like this:
+
+```json
+{
+  "resourceType": "Patient",
+  "active": true
+}
+```
+
+The element definition `Patient.active` is shown below as JSON, stripped from irrelevant properties.
+
+```json
 {
   "path": "Patient.active",
   "max": "1",
@@ -28,11 +39,11 @@ To start with an example, the element definition `Patient.active` is shown below
 }
 ```
 
-The first property is `path` which uniquely identifies an element definition and describes its position as element directly under the `Patient` resource. Next, the `max` property describes the cardinality of an element. Here `1` means cardinality one and `*` means candinality many. The `type` property describes the type which is boolean in this case. The `type` property is multi-valued itself because there are choice typed elements which will be shown later.
+The first property is `path` which uniquely identifies an element definition and describes its position as element directly under the `Patient` resource. Next, the `max` property describes the cardinality of an element. Here `1` means cardinality one and `*` means cardinality many. The `type` property describes the type which is boolean in this case. The `type` property is multi-valued itself to support choice-typed elements.
 
-The corresponding Datomic attribute definition is shown below as EDN.
+The corresponding [Datomic attribute definition](https://docs.datomic.com/on-prem/schema.html) is shown below as EDN.
 
-```text
+```clojure
 {:db/ident :Patient/active
  :db/valueType :db.type/boolean
  :db/cardinality :db.cardinality/one}
@@ -42,40 +53,114 @@ The corresponding Datomic attribute definition is shown below as EDN.
 [EDN](https://github.com/edn-format/edn) \(Extensible Data Notation\) has many things in common with [JSON](http://json.org) \(JavaScript Object Notation\). The main feature EDN introduces, are extensible data types. Among them, EDN has one build-in data type, the keyword which is used in the Datomic attribute definition. Keywords start with a colon and consist of two parts, a namespace and a name. For example in `:db/ident`,`db` is the namespace and `ident` the name.
 {% endhint %}
 
-In the above schema definition, the attribute defined is called `:Patient/active,` the data type \(`:db/valueType`\) of the attribute is a boolean and the cardinality is one. Cardinality many attributes will be shown later.
+In the above schema definition, the attribute defined is called `:Patient/active,` the data type \(`:db/valueType`\) of the attribute is a boolean and the cardinality is one. 
 
-### Special Id-Typed Elements
+### Multi-Valued Single-Typed Elements
 
-[Logical id elements](https://www.hl7.org/fhir/resource-definitions.html#Resource.id) are handled a bit special. They act as primary key for resources and so must be unique and indexed. The element definition of a patient id is the following \(only relevant properties\):
+Elements can be multi-valued so there value is represented as a JSON array. One example of a multi-valued element can be found in the `ServiceRequest` resource:
 
-```javascript
+```json
 {
-  "path": "Patient.id",
-  "max": "1",
+  "resourceType": "ServiceRequest",
+  "instantiatesUri": [
+      "http://foo.de",
+      "http://bar.de"
+  ]
+}
+```
+
+The `instantiatesUri` element is defined as shown below:
+
+```json
+{
+  "path": "ServiceRequest.instantiatesUri",
+  "max": "*",
   "type": [
     {
-      "code": "id"
+      "code": "uri"
     }
   ]
 }
 ```
 
-The only thing that makes the element definition different from the `Patient.active` definition is the data type. Here it's `id` instead of `boolean`. Element definitions with a single `id` data type are converted into Datomic attribute definition with one additional key-value pair. The above `Patient.id` translates to:
+The important new value is the `*` in `max`, which means cardinality many. The Datomic attribute definition looks like this:
 
-```text
-{:db/ident :Patient/id
+```clojure
+{:db/ident :ServiceRequest/instantiatesUri
  :db/valueType :db.type/string
- :db/cardinality :db.cardinality/one
- :db/unique :db.unique/identity}
+ :db/cardinality :db.cardinality/many}
 ```
 
-The additional key-value pair consists of the key `:db/unique` and the value `:db.unique/identity`. This information tells Datomic to keep sure, that all values of the attribute `:Patient/id` are unique in the sense that only one entity can hold a fact with a given value.
+Cardinality many in Datomic simply means that more than one fact can exist for a given entity and attribute. The facts, resulting from the above example JSON are the following:
+
+| Entity | Attribute | Value |
+| :--- | :--- | :--- |
+| 1 | `:ServiceRequest/instantiatesUri` | `"http://foo.de"` |
+| 1 | `:ServiceRequest/instantiatesUri` | `"http://bar.de"` |
+
+{% hint style="warning" %}
+There is one issue representing multi-valued data elements by just using Datomic attributes with cardinality many. Such Datomic attributes have set semantics, so that the order isn't preserved. However for some data elements, the order has a meaning. See [Issue \#15](https://github.com/life-research/blaze/issues/15) for more information.
+{% endhint %}
+
+### Choice-Typed Elements
+
+An example of a choice-typed element is `Patient.deceased[x]`. Choice-typed elements are always single-valued. The chosen data type can vary between resources. An example:
+
+```json
+{
+  "resourceType": "Patient",
+  "deceasedBoolean": true
+}
+```
+
+The element definition:
+
+```json
+{
+  "path": "Patient.deceased[x]",
+  "max": "1",
+  "type": [
+    {
+      "code": "boolean"
+    },
+    {
+      "code": "dateTime"
+    }
+  ]
+}
+```
+
+For choice typed elements, multiple Datomic attributes are created: one for each data type and one which holds the actual data type used in a given resource. For `Patient.deceased[x]` the following three attributes are created:
+
+```clojure
+{:db/ident :Patient/deceased
+ :db/valueType :db.type/ref
+ :db/cardinality :db.cardinality/one}
+
+{:db/ident :Patient/deceasedBoolean
+ :db/valueType :db.type/boolean
+ :db/cardinality :db.cardinality/one}
+
+{:db/ident :Patient/deceasedDateTime
+ :db/valueType :db.type/bytes
+ :db/cardinality :db.cardinality/one}
+```
+
+The attribute `:Patient/deceased` is actually a reference to the attribute of the chosen type which is `:Patient/deceasedBoolean` in this case. The following pattern can be used to access the actual value:
+
+```clojure
+(let [resource (d/entity db resource-eid)]
+  (when-let [attr (:Patient/deceased resource)]
+    (attr resource)))
+```
+
+Where `(:Patient/deceased resource)` will either return `:Patient/deceasedBoolean`, `:Patient/deceasedDateTime` or `nil`.
 
 ### Non-Primitive Single-Valued Single-Typed Elements
 
-The next class of element definitions are thoose with non-primitive data types. One example is the `Patient.maritalStatus`.
+The next class of element definitions are those with non-primitive data types. One example is the `Patient.maritalStatus`.
 
-```javascript
+```json
 {
   "path": "Patient.maritalStatus",
   "max": "1",
@@ -111,7 +196,7 @@ The [CodeableConcept](https://www.hl7.org/fhir/datatypes.html#CodeableConcept) d
 
 With all that schema definitions in hand, the following patient resource written in JSON:
 
-```javascript
+```json
 {
   "resourceType": "Patient",
   "id": "0",
@@ -145,60 +230,11 @@ The first entity represents the `Patient` resource while the second entity repre
 
 In the above table the four facts, which represent the `Patient` resource from the above JSON are shown. Of particilar interest is the fact which the attribute `:Patient/martialStatus` which refers to the entity with the identifier `2`, which itself holds the fact with attribute `:CodeableConcept/text` and value "Married".
 
-#### Primitive Multi-Valued Single-Typed Elements
-
-Elements can be multi-valued so there value is represented as a JSON array. One example of a primitive, multi-valued element can be found in the `ServiceRequest` resource:
-
-```javascript
-{
-  "resourceType": "ServiceRequest",
-  "instantiatesUri": [
-    {
-      "http://foo.de",
-      "http://bar.de"
-    }
-  ]
-}
-```
-
-The `instantiatesUri` element is defined as shown below:
-
-```javascript
-{
-  "path": "ServiceRequest.instantiatesUri",
-  "max": "*",
-  "type": [
-    {
-      "code": "uri"
-    }
-  ]
-}
-```
-
-The important new value is the `*` in `max`, which means cardinality many. The Datomic attribute definition looks like this:
-
-```text
-{:db/ident :ServiceRequest/instantiatesUri
- :db/valueType :db.type/string
- :db/cardinality :db.cardinality/many}
-```
-
-Cardinality many in Datomic simply means that more than one fact can exist for a given entity and attribute. The facts, resulting from the above example JSON are the following:
-
-| Entity | Attribute | Value |
-| :--- | :--- | :--- |
-| 1 | `:ServiceRequest/instantiatesUri` | "http://foo.de" |
-| 1 | `:ServiceRequest/instantiatesUri` | "http://bar.de" |
-
-{% hint style="warning" %}
-There is one issue representing multi-valued data elements by just using Datomic attributes with cardinality many. Such Datomic attributes have set semantics, so that the order isn't preserved. However for some data elements, the order has a meaning. See [Issue \#15](https://github.com/life-research/blaze/issues/15) for more information.
-{% endhint %}
-
 ### Choice-Typed Elements
 
 Data elements can be choice typed, which means that every resource can choose one out of the type choices for that element. One common example is the element `Observation.value[x]`, which has various type choices like `Quantity` and `string`. In JSON the type is appended title-cased to the name of the element.
 
-```javascript
+```json
 {
   "resourceType": "Observation"
   "valueQuantity": {
@@ -239,6 +275,33 @@ The above `Observation` resource is converted to the following Datomic entities:
 ```
 
 The additional `:Observation/value` attribute is nescessary, because otherwise, graph traversal from `Observation` to its value had to search for the concrete value attribute choosen.
+
+### Special Id-Typed Elements
+
+[Logical id elements](https://www.hl7.org/fhir/resource-definitions.html#Resource.id) are handled a bit special. They act as primary key for resources and so must be unique and indexed. The element definition of a patient id is the following \(only relevant properties\):
+
+```json
+{
+  "path": "Patient.id",
+  "max": "1",
+  "type": [
+    {
+      "code": "id"
+    }
+  ]
+}
+```
+
+The only thing that makes the element definition different from the `Patient.active` definition is the data type. Here it's `id` instead of `boolean`. Element definitions with a single `id` data type are converted into Datomic attribute definition with one additional key-value pair. The above `Patient.id` translates to:
+
+```text
+{:db/ident :Patient/id
+ :db/valueType :db.type/string
+ :db/cardinality :db.cardinality/one
+ :db/unique :db.unique/identity}
+```
+
+The additional key-value pair consists of the key `:db/unique` and the value `:db.unique/identity`. This information tells Datomic to keep sure, that all values of the attribute `:Patient/id` are unique in the sense that only one entity can hold a fact with a given value.
 
 ### Special Version Attribute
 

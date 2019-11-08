@@ -16,15 +16,11 @@ Download of the latest release: [blazectl v0.2.0](https://github.com/life-resear
 
 Synthea Patient Generator is a standard tool for generating test data which can be uploaded to Blaze.
 
-{% embed url="https://github.com/synthetichealth/synthea" %}
+{% embed url="https://github.com/synthetichealth/synthea" caption="" %}
 
 ## bbmri-fhir-gen
 
 Another test data generator which is available from the team of the German Biobank Alliance. CQL queries in Blaze are currently tested against this dataset.
 
-{% embed url="https://github.com/samply/bbmri-fhir-gen" %}
-
-
-
-
+{% embed url="https://github.com/samply/bbmri-fhir-gen" caption="" %}
 

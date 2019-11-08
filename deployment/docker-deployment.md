@@ -65,7 +65,7 @@ curl -H 'Accept:application/fhir+json' -s http://localhost:8080/fhir/metadata | 
 
 that should return:
 
-```json
+```javascript
 {
   "name": "Blaze",
   "version": "0.6.4"

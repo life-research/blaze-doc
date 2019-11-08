@@ -4,7 +4,7 @@ In order to use Blaze for queries, you have to import your data. Although you ca
 
 First you should test connectivity by counting already available resources in Blaze which should be zero:
 
-```bash
+```text
 blazectl --server http://localhost:8080/fhir count-resources
 ```
 
@@ -19,7 +19,7 @@ total                             : 0
 
 After that, you need a FHIR bundle to upload. You can generate one by downloading [bbmri-fhir-gen](https://github.com/samply/bbmri-fhir-gen) and run:
 
-```bash
+```text
 mkdir fhir-test-data
 bbmri-fhir-gen fhir-test-data
 ```
@@ -33,7 +33,7 @@ That will generate two files under `fhir-test-data`:
 
 After you have the test data, you can upload it with:
 
-```bash
+```text
 blazectl --server http://localhost:8080/fhir upload fhir-test-data
 ```
 
@@ -53,7 +53,7 @@ Status Codes     [code:count]             200:2
 
 counting the FHIR resources again:
 
-```bash
+```text
 blazectl --server http://localhost:8080/fhir count-resources
 ```
 

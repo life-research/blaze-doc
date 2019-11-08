@@ -44,3 +44,5 @@ Blaze will be configured through environment variables which are documented here
 
 Continue with importing your first data:
 
+{% page-ref page="../importing-data.md" %}
+

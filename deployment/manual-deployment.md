@@ -48,18 +48,42 @@ java -jar blaze-0.7.0-rc.1-standalone.jar -m blaze.core
 The output should look like this:
 
 ```text
+19-12-16 11:49:18 ce3fb21de517 INFO [blaze.system:165] - Set log level to: info
+19-12-16 11:49:18 ce3fb21de517 INFO [blaze.system:43] - Try to read blaze.edn ...
+19-12-16 11:49:18 ce3fb21de517 INFO [blaze.system:152] - Feature OpenID Authentication disabled
+19-12-16 11:49:18 ce3fb21de517 INFO [blaze.system:74] - Loading namespaces ...
 WARNING: requiring-resolve already refers to: #'clojure.core/requiring-resolve in namespace: datomic.common, being replaced by: #'datomic.common/requiring-resolve
-19-09-17 16:14:14 <host> INFO [blaze.system:217] - Set log level to: info
-19-09-17 16:14:14 <host> INFO [blaze.system:232] - Read structure definitions resulting in: 190 structure definitions
-19-09-17 16:14:15 <host> INFO [blaze.system:250] - Use existing database at: datomic:free://localhost:4334/dev?password=datomic
-19-09-17 16:14:15 <host> INFO [blaze.system:252] - Connect with database: datomic:free://localhost:4334/dev?password=datomic
-19-09-17 16:14:20 <host> INFO [blaze.system:259] - Init terminology server connection: http://tx.fhir.org/r4
-19-09-17 16:14:20 <host> INFO [blaze.system:367] - Init FHIR RESTful API with base URL: http://localhost:8080/fhir
-19-09-17 16:14:20 <host> INFO [blaze.system:438] - Start metrics server on port 8081
-19-09-17 16:14:20 <host> INFO [blaze.system:395] - Start main server on port 8080
-19-09-17 16:14:20 <host> INFO [blaze.core:49] - JVM version: 1.8.0_221
-19-09-17 16:14:20 <host> INFO [blaze.core:50] - Maximum available memory: 3641 MiB
-19-09-17 16:14:20 <host> INFO [blaze.core:51] - Number of available processors: 8
+19-12-16 11:49:32 ce3fb21de517 INFO [blaze.system:76] - Loaded the following namespaces: blaze.datomic.transaction, blaze.structure-definition, blaze.datomic, blaze.fhir.operation.evaluate-measure, blaze.handler.health, blaze.interaction.history.instance, blaze.interaction.history.system, blaze.interaction.history.type, blaze.interaction.transaction, blaze.interaction.create, blaze.interaction.delete, blaze.interaction.read, blaze.interaction.search-type, blaze.interaction.update, blaze.rest-api, blaze.handler.app, blaze.metrics, blaze.handler.metrics, blaze.server, blaze.thread-pool-executor-collector, blaze.terminology-service.extern, blaze.terminology-service
+19-12-16 11:49:33 ce3fb21de517 INFO [blaze.structure-definition:140] - Read structure definitions resulting in: 190 structure definitions
+19-12-16 11:49:33 ce3fb21de517 INFO [blaze.datomic:25] - Created database at: datomic:mem://dev
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.datomic:18] - Upsert schema in database: datomic:mem://dev creating 92290 new facts
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.datomic:29] - Connect with database: datomic:mem://dev
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.fhir.operation.evaluate-measure:69] - Init FHIR $evaluate-measure operation executor
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.terminology-service.extern:184] - Init terminology server connection: http://tx.fhir.org/r4
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.fhir.operation.evaluate-measure:63] - Init FHIR $evaluate-measure operation handler
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.handler.health:21] - Init health handler
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.interaction.history.instance:108] - Init FHIR history instance interaction handler
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.interaction.history.system:122] - Init FHIR history system interaction handler
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.interaction.history.type:125] - Init FHIR history type interaction handler
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.interaction.transaction:396] - Init FHIR transaction interaction executor
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.interaction.transaction:390] - Init FHIR transaction interaction handler
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.interaction.create:82] - Init FHIR create interaction handler
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.interaction.delete:62] - Init FHIR delete interaction handler
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.interaction.read:98] - Init FHIR read interaction handler
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.interaction.search-type:126] - Init FHIR search-type interaction handler
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.interaction.update:113] - Init FHIR update interaction handler
+19-12-16 11:49:36 ce3fb21de517 INFO [blaze.rest-api:385] - Init FHIR RESTful API with base URL: http://localhost:8080/fhir
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.handler.app:35] - Init app handler
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.system:199] - Init server executor
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.thread-pool-executor-collector:70] - Init thread pool executor collector.
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.metrics:27] - Init metrics registry
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.handler.metrics:29] - Init metrics handler
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.system:220] - Start metrics server on port 8081
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.system:208] - Start main server on port 8080
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:58] - JVM version: 11.0.4
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:59] - Maximum available memory: 1490 MiB
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:60] - Number of available processors: 4
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:61] - Successfully started Blaze version 0.7.0-rc.1 in 19.4 seconds
 ```
 
 In order to test connectivity, query the health endpoint:

@@ -191,7 +191,7 @@ Cardinality many in Datomic simply means that more than one fact can exist for a
 | 1 | `:ServiceRequest/instantiatesUri` | "http://bar.de" |
 
 {% hint style="warning" %}
-There is one issue representing multi-valued data elements by just using Datomic attributes with cardinality many. Such Datomic attributes have set semantics, so that the order isn't preserved. However for some data elements, the order has a meaning. See [Issue \#15](https://github.com/life-research/blaze/issues/15) for more information.
+There is one issue representing multi-valued data elements by just using Datomic attributes with cardinality many. Such Datomic attributes have set semantics, so that the order isn't preserved. However for some data elements, the order has a meaning. See [Issue \#15](https://github.com/samply/blaze/issues/15) for more information.
 {% endhint %}
 
 ### Choice-Typed Elements

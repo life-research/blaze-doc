@@ -10,7 +10,7 @@ Alongside Blaze, there is a command-line tool called blazectl which can be used 
 
 Blazectl is most suitable to upload transaction bundles to Blaze.
 
-Download of the latest release: [blazectl v0.2.0](https://github.com/life-research/blazectl/releases/tag/v0.2.0)
+Download of the latest release: [blazectl v0.2.0](https://github.com/samply/blazectl/releases/tag/v0.2.0)
 
 ## Synthea Patient Generator
 

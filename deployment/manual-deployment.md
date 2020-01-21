@@ -30,19 +30,19 @@ You can change the data dir in the properties file if you like to have it at a d
 
 ## Blaze
 
-Blaze runs on the JVM and comes as single JAR file. Download the most recent version [here](https://github.com/life-research/blaze/releases/tag/v0.7.0-rc.1). Look for `blaze-0.7.0-rc.1-standalone.jar`. Blaze requires at least Java 8 and is also tested with Java 11.
+Blaze runs on the JVM and comes as single JAR file. Download the most recent version [here](https://github.com/samply/blaze/releases/tag/v0.7.0). Look for `blaze-0.7.0-standalone.jar`. Blaze requires at least Java 8 and is also tested with Java 11.
 
 After the download, you can start blaze with the following command \(Linux, MacOS\):
 
 ```text
-DATABASE_URI=datomic:free://localhost:4334/db java -jar blaze-0.7.0-rc.1-standalone.jar -m blaze.core
+DATABASE_URI=datomic:free://localhost:4334/db java -jar blaze-0.7.0-standalone.jar -m blaze.core
 ```
 
 Under Windows you need to set the Environment variables in the PowerShell before starting Blaze:
 
 ```text
 $Env:DATABASE_URI = "datomic:free://localhost:4334/db"
-java -jar blaze-0.7.0-rc.1-standalone.jar -m blaze.core
+java -jar blaze-0.7.0-standalone.jar -m blaze.core
 ```
 
 The output should look like this:
@@ -83,7 +83,7 @@ WARNING: requiring-resolve already refers to: #'clojure.core/requiring-resolve i
 19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:58] - JVM version: 11.0.4
 19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:59] - Maximum available memory: 1490 MiB
 19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:60] - Number of available processors: 4
-19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:61] - Successfully started Blaze version 0.7.0-rc.1 in 19.4 seconds
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:61] - Successfully started Blaze version 0.7.0 in 19.4 seconds
 ```
 
 In order to test connectivity, query the health endpoint:
@@ -103,7 +103,7 @@ that should return:
 ```javascript
 {
   "name": "Blaze",
-  "version": "0.7.0-rc.1"
+  "version": "0.7.0"
 }
 ```
 

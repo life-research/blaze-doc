@@ -31,7 +31,7 @@ The environment variable `DATABASE_URI` tells Blaze to use the started Datomic d
 ```text
 docker run -d --name blaze --network blaze \
   -e DATABASE_URI=datomic:free://db:4334/db?password=datomic \
-  -p 8080:8080 liferesearch/blaze:0.7.0-rc.1
+  -p 8080:8080 samply/blaze:0.7.0
 ```
 
 Blaze should log something like this:
@@ -72,7 +72,7 @@ WARNING: requiring-resolve already refers to: #'clojure.core/requiring-resolve i
 19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:58] - JVM version: 11.0.4
 19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:59] - Maximum available memory: 1490 MiB
 19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:60] - Number of available processors: 4
-19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:61] - Successfully started Blaze version 0.7.0-rc.1 in 19.4 seconds
+19-12-16 11:49:37 ce3fb21de517 INFO [blaze.core:61] - Successfully started Blaze version 0.7.0 in 19.4 seconds
 ```
 
 In order to test connectivity, query the health endpoint:
@@ -92,7 +92,7 @@ that should return:
 ```javascript
 {
   "name": "Blaze",
-  "version": "0.7.0-rc.1"
+  "version": "0.7.0"
 }
 ```
 
@@ -116,7 +116,7 @@ services:
     volumes:
     - "db-data:/data"
   store:
-    image: "liferesearch/blaze:0.7.0-rc.1"
+    image: "samply/blaze:0.7.0"
     environment:
       DATABASE_URI: "datomic:free://db:4334/dev?password=datomic"
     ports:

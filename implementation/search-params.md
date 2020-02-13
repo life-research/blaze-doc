@@ -60,3 +60,21 @@ UpBd(target-value) >= search-value
 
 So the upper boundary of the target value has to be greater or equal to the exact search value.
 
+### Greater Equal
+
+The greater equal operator is defined so:
+
+>  the range above the search value intersects \(i.e. overlaps\) with the range of the target value, or the range of the search value fully contains the range of the target value
+
+The first condition is the same as in greater than. In addition to that greater equal adds the ranges of target values which are fully contained in the range of the search value.
+
+![ge](ge.png)
+
+The above figure shows an additional matching target value. In order to find such values their lower boundaries have to be greater or equal to the lower boundary of the search values and their upper boundaries have to be less than the exact search value.
+
+```text
+LwBd(target-value) >= LwBd(search-value) && UpBd(target-value) < search-value
+``` 
+
+The rest of the matches will be found by the inequation for grater than.
+

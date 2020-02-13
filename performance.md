@@ -12,7 +12,7 @@ MacBook Pro \(Retina, 15-inch, Mid 2015\) 2,5 GHz Intel Core i7, 16 GB RAM. Blaz
 
 ### Upload Method
 
-Command line tool `blazectl` on a  with concurrency of 8.
+Command line tool `blazectl` on a with concurrency of 8.
 
 ```text
 Uploads       [total, concurrency]     11647, 8
@@ -47,6 +47,4 @@ The upload resulted in the following resource counts:
 | Procedure | 322,732 |
 
 The size of the Datomic database \(free version\) on disk after the import was 7.8 GiB.
-
-
 

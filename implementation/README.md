@@ -10,7 +10,7 @@ For transactions, Blaze has to do I/O. The transaction data is send to the Datom
 
 There exists a separate page for implementation considerations regarding the database design.
 
-{% page-ref page="database-design.md" %}
+{% page-ref page="../database-design.md" %}
 
 ## History Paging
 

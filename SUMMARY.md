@@ -9,7 +9,8 @@
 * [Conformance](conformance.md)
 * [Tooling](tooling.md)
 * [Performance](performance.md)
-* [Implementation](implementation.md)
+* [Implementation](implementation/README.md)
+  * [Search Params](implementation/search-params.md)
 * [Database Design](database-design.md)
 * [Importing Data](importing-data.md)
 

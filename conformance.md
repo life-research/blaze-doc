@@ -16,5 +16,3 @@ Touchstone test results can be found here: [FHIR 4.0.0 Server / LIFE - Blaze / J
 
 Crucible test results can be found here: [Blaze](https://projectcrucible.org/servers/5cdd7fde04ebd042c8000000)
 
-
-

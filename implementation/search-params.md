@@ -48,9 +48,9 @@ The range above the value is defined so:
 
 > the range above 2.0 includes any value greater or equal to 2.00000000000000000000
 
-![gt](../.gitbook/assets/gt.png)
+![Figure 1: Greater Than](../.gitbook/assets/gt.png)
 
-In the figure above values spread along the Y-axis starting at low values on top of the figure and increase to the bottom of the figure. The search value is red and has a thickness which corresponds to their precision. For example if the search value is 2.0 its lower boundary \(LwBd\) would be 1.95 and it's upper boundary \(UpBd\) would be 2.05. In green there is the "range above the value" which reaches from the exact search value 2.00000 up to infinity. On the right there is one possible matching target value in black. Its precision is lower so it stretches more along the Y-axis.
+In figure 1, values spread along the Y-axis starting at low values on top of the figure and increase to the bottom of the figure. The search value is red and has a thickness which corresponds to their precision. For example if the search value is 2.0 its lower boundary \(LwBd\) would be 1.95 and it's upper boundary \(UpBd\) would be 2.05. In green there is the "range above the value" which reaches from the exact search value 2.00000 up to infinity. On the right there is one possible matching target value in black. Its precision is lower so it stretches more along the Y-axis.
 
 Target values match if their range intersects with the range above the value. In order to decide whether a target value matches, one has to evaluate the following inequation:
 
@@ -64,17 +64,18 @@ So the upper boundary of the target value has to be greater or equal to the exac
 
 The greater equal operator is defined so:
 
->  the range above the search value intersects \(i.e. overlaps\) with the range of the target value, or the range of the search value fully contains the range of the target value
+> the range above the search value intersects \(i.e. overlaps\) with the range of the target value, or the range of the search value fully contains the range of the target value
 
 The first condition is the same as in greater than. In addition to that greater equal adds the ranges of target values which are fully contained in the range of the search value.
 
-![ge](ge.png)
+![Figure 2: Greater Equal without the Greater part](../.gitbook/assets/ge.png)
 
 The above figure shows an additional matching target value. In order to find such values their lower boundaries have to be greater or equal to the lower boundary of the search values and their upper boundaries have to be less than the exact search value.
 
 ```text
-LwBd(target-value) >= LwBd(search-value) && UpBd(target-value) < search-value
-``` 
+LwBd(target-value) >= LwBd(search-value) && 
+UpBd(target-value) < search-value
+```
 
 The rest of the matches will be found by the inequation for grater than.
 

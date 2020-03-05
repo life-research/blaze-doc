@@ -7,7 +7,7 @@ The following table contains all of them:
 | Name | Default | Since | Description |
 | :--- | :--- | :--- | :--- |
 | DATABASE\_URI | datomic:mem://dev |  | URI of the Datomic database In-memory, volatile by default |
-| PROXY\_HOST | — | v0.6 | Proxy server for outbound HTTP requests |
+| PROXY\_HOST | — | v0.6 | The hostname of the proxy server for outbound HTTP requests |
 | PROXY\_PORT | — | v0.6 | Port of the proxy server |
 | PROXY\_USER | — | v0.6.1 | Proxy server user, if authentication is needed. |
 | PROXY\_PASSWORD | — | v0.6.1 | Proxy server password, if authentication is needed. |

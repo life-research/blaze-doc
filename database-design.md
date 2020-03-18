@@ -129,7 +129,7 @@ will consist of the following two entities in Datomic:
  :Patient/id "0"
  :Patient/active true
  :Patient/martialStatus 2}
- 
+
 {:db/id 2
  :CodeableConcept/text "Married"}
 ```
@@ -187,8 +187,8 @@ Cardinality many in Datomic simply means that more than one fact can exist for a
 
 | Entity | Attribute | Value |
 | :--- | :--- | :--- |
-| 1 | `:ServiceRequest/instantiatesUri` | "http://foo.de" |
-| 1 | `:ServiceRequest/instantiatesUri` | "http://bar.de" |
+| 1 | `:ServiceRequest/instantiatesUri` | "[http://foo.de](http://foo.de)" |
+| 1 | `:ServiceRequest/instantiatesUri` | "[http://bar.de](http://bar.de)" |
 
 {% hint style="warning" %}
 There is one issue representing multi-valued data elements by just using Datomic attributes with cardinality many. Such Datomic attributes have set semantics, so that the order isn't preserved. However for some data elements, the order has a meaning. See [Issue \#15](https://github.com/samply/blaze/issues/15) for more information.
@@ -216,11 +216,11 @@ The translation of a choice-typed data element into a Datomic schema creates one
 {:db/ident :Observation/valueQuantity
  :db/valueType :db.type/ref
  :db/cardinality :db.cardinality/one}
- 
+
 {:db/ident :Observation/valueString
  :db/valueType :db.type/string
  :db/cardinality :db.cardinality/one}
- 
+
 {:db/ident :Observation/value
  :db/valueType :db.type/ref
  :db/cardinality :db.cardinality/one}
@@ -232,7 +232,7 @@ The above `Observation` resource is converted to the following Datomic entities:
 {:db/id 1
  :Observation/value :Observation/valueQuantity
  :Observation/valueQuantity 2}
- 
+
 {:db/id 2
  :Quantity/value 1
  :Quantity/unit "m"}
@@ -320,5 +320,5 @@ Because the history interaction is supposed to return the newest version first a
 
 Resources can be created through the [create](https://www.hl7.org/fhir/http.html#create) or the [update interaction](https://www.hl7.org/fhir/http.html#update). If the create interaction is used, the logical identifier of a resource is choosen by the server, were the update interaction allows the client to specify the logical identifier. Furthermore the create interaction uses the HTTP POST method and a type-level URL while the update interaction uses PUT and an instance level URL.
 
-In the history bundle returned by the history interaction, each entry has to specify the HTTP request which lead to the particular version. At first it seems natural to store the information, whether create or update was used to create the first version of a resource,  in the transaction entity itself. But the transaction interaction allows creating multiple resources during one transaction so it would be necessary to iterate all ...
+In the history bundle returned by the history interaction, each entry has to specify the HTTP request which lead to the particular version. At first it seems natural to store the information, whether create or update was used to create the first version of a resource, in the transaction entity itself. But the transaction interaction allows creating multiple resources during one transaction so it would be necessary to iterate all ...
 

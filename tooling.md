@@ -24,3 +24,8 @@ Another test data generator which is available from the team of the German Bioba
 
 {% embed url="https://github.com/samply/bbmri-fhir-gen" caption="" %}
 
+## YourKit Profiler
+
+![YourKit logo](https://www.yourkit.com/images/yklogo.png)
+
+The developers of Blaze uses the YourKit profiler to optimize performance. YourKit supports open source projects with innovative and intelligent tools for monitoring and profiling Java and .NET applications. YourKit is the creator of [YourKit Java Profiler][6], [YourKit .NET Profiler][7] and [YourKit YouMonitor][8].

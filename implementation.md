@@ -2,9 +2,7 @@
 
 ## Threading Model
 
-Blaze uses the [Aleph HTTP server](https://aleph.io/aleph/http.html) which is able to process requests asynchronously. Aleph doesn't need one thread per request processing. Instead it uses a low number of threads to handle I/O for multiple requests buffering HTTP headers and bodies. Once a request is fully received, a worker thread is used to calculate the response. In case the response calculation needs to perform I/O itself, like connecting to the Datomic transactor for writes, it uses [Manifold Deferreds](https://aleph.io/manifold/deferreds.html) to do that asynchronously as well. Doing so makes all other request processing CPU bound.
-
-For transactions, Blaze has to do I/O. The transaction data is send to the Datomic transactor and Blaze has to wait for the answer. In order to maximize the throughput of the transactor, Blaze uses a parallelism level of 20 while sending data to it. Again a work-stealing thread pool is used to achieve and maintain that parallelism level.
+Blaze uses the [Aleph HTTP server](https://aleph.io/aleph/http.html) which is able to process requests asynchronously. Aleph doesn't need one thread per request processing. Instead it uses a low number of threads to handle I/O for multiple requests buffering HTTP headers and bodies. Once a request is fully received, a worker thread is used to calculate the response. In case the response calculation needs to perform I/O itself, like connecting to Kafka for writes, it uses [Manifold Deferreds](https://aleph.io/manifold/deferreds.html) to do that asynchronously as well. Doing so makes all other request processing CPU bound.
 
 ## Database Design
 

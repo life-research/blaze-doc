@@ -12,7 +12,7 @@ The goal of this project is to provide a FHIR® Store with an internal CQL Evalu
 
 The project is currently under active development. Essentially all official [CQL Tests](https://cql.hl7.org/tests.html) pass. Please report any issues you encounter during evaluation.
 
-Latest release: [v0.7.0](https://github.com/samply/blaze/releases/tag/v0.7.0)
+Latest release: [v0.8.0-beta.3](https://github.com/samply/blaze/releases/tag/v0.8.0-beta.3)
 
 ## Next Steps
 

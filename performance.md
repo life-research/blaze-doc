@@ -8,20 +8,37 @@ Generated 10,000 patients with Synthea master branch with Git SHA `4fed9eaf` and
 
 ### Test System
 
-MacBook Pro \(Retina, 15-inch, Mid 2015\) 2,5 GHz Intel Core i7, 16 GB RAM. Blaze version 0.6-alpha48.
+MacBook Pro \(Retina, 15-inch, Mid 2015\) 2,5 GHz Intel Core i7, 16 GB RAM. Blaze version 0.8.0-beta.3.
+
+### Start Script
+
+```bash
+DB_DIR=~/blaze-data/db java -jar blaze-0.8.0-beta.3-standalone.jar -m blaze.core
+```
+
+### Relevant Startup Log Output
+
+```text
+Init resource indexer executor with 4 threads
+Init RocksDB block cache of 128 MB
+Init RocksDB statistics
+Open RocksDB key-value store in directory `~/blaze-data/db` with options: {:max-background-jobs 4, :compaction-readahead-size 0}
+Create resource cache with a size of 10000 resources
+Open local transaction log with a resource indexer batch size of 1.
+Init FHIR transaction interaction executor with 8 threads
+Init JSON parse executor with 8 threads
+Init server executor with 8 threads
+JVM version: 11.0.7
+Maximum available memory: 4096 MiB
+Number of available processors: 8
+Successfully started Blaze version 0.8.0-beta.3 in 14.2 seconds
+```
 
 ### Upload Method
 
 Command line tool `blazectl` on a  with concurrency of 8.
 
 ```text
-Uploads       [total, concurrency]     11647, 8
-Success       [ratio]                  100 %
-Duration      [total]                  2h42m43s
-Latencies     [mean, 50, 95, 99, max]  6.695s, 3.502s, 28.023s, 36.342s 2m45.764s
-Bytes In      [total, mean]            828.40 MiB, 72.83 KiB
-Bytes Out     [total, mean]            9.88 GiB, 889.33 KiB
-Status Codes  [code:count]             200:11647
 ```
 
 The upload resulted in the following resource counts:
@@ -46,7 +63,7 @@ The upload resulted in the following resource counts:
 | Practitioner | 33,896 |
 | Procedure | 322,732 |
 
-The size of the Datomic database \(free version\) on disk after the import was 7.8 GiB.
+The size of the database directory after the import was ?? GiB.
 
 
 

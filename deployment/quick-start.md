@@ -9,7 +9,7 @@ In order to run Blaze with an in-memory, volatile database, just execute the fol
 ## Docker
 
 ```text
-docker run -p 8080:8080 samply/blaze:0.7.0
+docker run -p 8080:8080 samply/blaze:0.8.0-beta.3
 ```
 
 ## Java
@@ -17,8 +17,8 @@ docker run -p 8080:8080 samply/blaze:0.7.0
 Blaze works with Java 8 or Java 11.
 
 ```text
-wget https://github.com/samply/blaze/releases/download/v0.7.0/blaze-0.7.0-standalone.jar
-java -jar blaze-0.7.0-standalone.jar -m blaze.core
+wget https://github.com/samply/blaze/releases/download/v0.8.0-beta.3/blaze-0.8.0-beta.3-standalone.jar
+java -jar blaze-0.8.0-beta.3-standalone.jar -m blaze.core
 ```
 
 Logging output should appear which prints the most important settings and system parameters like Java version and available memory.
@@ -34,7 +34,7 @@ that should return:
 ```javascript
 {
   "name": "Blaze",
-  "version": "0.7.0"
+  "version": "0.8.0-beta.3"
 }
 ```
 

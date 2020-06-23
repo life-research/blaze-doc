@@ -36,33 +36,43 @@ Successfully started Blaze version 0.8.0-beta.3 in 14.2 seconds
 
 ### Upload Method
 
-Command line tool `blazectl` on a with concurrency of 8.
+Command line tool `blazectl` with concurrency of 8.
 
 ```text
-
+Starting Upload to http://localhost:8080/fhir ...
+Uploads          [total, concurrency]     11676, 8
+Success          [ratio]                  100.00 %
+Duration         [total]                  33m29s
+Requ. Latencies  [mean, 50, 95, 99, max]  1.374s, 1.089s, 2.856s, 6.743s 30.229s
+Proc. Latencies  [mean, 50, 95, 99, max]  1.364s, 1.085s, 2.842s, 6.738s 29.042s
+Bytes In         [total, mean]            817.58 MiB, 71.70 KiB
+Bytes Out        [total, mean]            10.08 GiB, 904.95 KiB
+Status Codes     [code:count]             200:11676
 ```
 
 The upload resulted in the following resource counts:
 
 | Metric | Count |
 | :--- | :--- |
-| AllergyIntolerance | 5,624 |
-| CarePlan | 35,642 |
-| Claim | 508,655 |
-| Condition | 84,133 |
-| DiagnosticReport | 142,743 |
-| Encounter | 402,061 |
-| ExplanationOfBenefit | 402,061 |
-| Goal | 26,496 |
-| ImagingStudy | 7,419 |
-| Immunization | 144,534 |
-| MedicationAdministration | 4,688 |
-| MedicationRequest | 106,594 |
-| Observation | 2,010,002 |
-| Organization | 33,897 |
-| Patient | 11,645 |
-| Practitioner | 33,896 |
-| Procedure | 322,732 |
+| AllergyIntolerance | 5,360 |
+| CarePlan | 35,578 |
+| Claim | 522,122 |
+| Condition | 83,683
+| DiagnosticReport | 145,727 |
+| Encounter | 408,512 |
+| ExplanationOfBenefit | 408,512 |
+| Goal | 27,125 |
+| ImagingStudy | 8,122 |
+| Immunization | 144,970 |
+| MedicationAdministration | 6,120 |
+| MedicationRequest | 113,610 |
+| Observation | 2,072,024 |
+| Organization | 33,718 |
+| Patient | 11,674 |
+| Practitioner | 33,714 |
+| Procedure | 327,659 |
 
-The size of the database directory after the import was ?? GiB.
+The size of the database directory after the import was 34 GiB and 8.4 GB after compaction.
+
+
 

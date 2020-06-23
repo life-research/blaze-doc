@@ -36,9 +36,10 @@ Successfully started Blaze version 0.8.0-beta.3 in 14.2 seconds
 
 ### Upload Method
 
-Command line tool `blazectl` on a  with concurrency of 8.
+Command line tool `blazectl` on a with concurrency of 8.
 
 ```text
+
 ```
 
 The upload resulted in the following resource counts:
@@ -64,6 +65,4 @@ The upload resulted in the following resource counts:
 | Procedure | 322,732 |
 
 The size of the database directory after the import was ?? GiB.
-
-
 

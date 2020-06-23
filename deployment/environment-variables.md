@@ -6,7 +6,7 @@ The following table contains all of them:
 
 | Name | Default | Since | Description |
 | :--- | :--- | :--- | :--- |
-| DB\_DIR | – | v0.8 | The directory were the database files are stored. This directory must not exist on the first start of Blaze and will be created by Blaze. However the parent directory has to exist. The default is to use an in-memory, volatile database.|
+| DB\_DIR | – | v0.8 | The directory were the database files are stored. This directory must not exist on the first start of Blaze and will be created by Blaze. However the parent directory has to exist. The default is to use an in-memory, volatile database. |
 | DB\_BLOCK\_CACHE\_SIZE | 128 | v0.8 | The size of the [block cache](https://github.com/facebook/rocksdb/wiki/Setup-Options-and-Basic-Tuning#block-cache-size) of the DB in MB. |
 | DB\_RESOURCE\_CACHE\_SIZE | 10000 | v0.8 | The size of the resource cache of the DB in number of resources. |
 | DB\_MAX\_BACKGROUND\_JOBS | 4 | v0.8 | The maximum number of the [background jobs](https://github.com/facebook/rocksdb/wiki/RocksDB-Basics#multi-threaded-compactions) used for DB compactions. |

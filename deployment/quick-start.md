@@ -14,7 +14,7 @@ docker run -p 8080:8080 samply/blaze:0.8.0-beta.3
 
 ## Java
 
-Blaze works with Java 8 or Java 11.
+Blaze works with Java 11.
 
 ```text
 wget https://github.com/samply/blaze/releases/download/v0.8.0-beta.3/blaze-0.8.0-beta.3-standalone.jar

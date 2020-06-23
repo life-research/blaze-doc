@@ -71,8 +71,13 @@ The upload resulted in the following resource counts:
 | Patient | 11,674 |
 | Practitioner | 33,714 |
 | Procedure | 327,659 |
+| **total** | **4,388,230** |
+
+That are 4,388,230 resources in 33 minutes and 29 seconds or about 2,200 resources per second on a 8 core machine.
 
 The size of the database directory after the import was 34 GiB and 8.4 GB after compaction.
 
+### Other Test Systems
 
+On a VM with 32 vCores the same upload with a concurrency of only 8 was 13 minutes and 12 seconds or about 5,500 resources per second. The VM was only utilized about 50% during the import.
 

@@ -13,13 +13,13 @@ MacBook Pro \(Retina, 15-inch, Mid 2015\) 2,5 GHz Intel Core i7, 16 GB RAM. Blaz
 ### Start Script
 
 ```bash
-DB_DIR=~/blaze-data/db java -jar blaze-0.8.0-beta.3-standalone.jar -m blaze.core
+DB_DIR=~/blaze-data/db DB_RESOURCE_INDEXER_THREADS=8 java -jar blaze-0.8.0-beta.3-standalone.jar -m blaze.core
 ```
 
 ### Relevant Startup Log Output
 
 ```text
-Init resource indexer executor with 4 threads
+Init resource indexer executor with 8 threads
 Init RocksDB block cache of 128 MB
 Init RocksDB statistics
 Open RocksDB key-value store in directory `~/blaze-data/db` with options: {:max-background-jobs 4, :compaction-readahead-size 0}

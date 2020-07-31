@@ -42,10 +42,10 @@ Command line tool `blazectl` with concurrency of 8.
 Starting Upload to http://localhost:8080/fhir ...
 Uploads          [total, concurrency]     11676, 8
 Success          [ratio]                  100.00 %
-Duration         [total]                  33m29s
-Requ. Latencies  [mean, 50, 95, 99, max]  1.374s, 1.089s, 2.856s, 6.743s 30.229s
-Proc. Latencies  [mean, 50, 95, 99, max]  1.364s, 1.085s, 2.842s, 6.738s 29.042s
-Bytes In         [total, mean]            817.58 MiB, 71.70 KiB
+Duration         [total]                  30m1s
+Requ. Latencies  [mean, 50, 95, 99, max]  1.231s, 991ms, 2.577s, 5.986s 20.958s
+Proc. Latencies  [mean, 50, 95, 99, max]  1.223s, 987ms, 2.553s, 5.964s 19.761s
+Bytes In         [total, mean]            817.59 MiB, 71.70 KiB
 Bytes Out        [total, mean]            10.08 GiB, 904.95 KiB
 Status Codes     [code:count]             200:11676
 ```
@@ -73,9 +73,9 @@ The upload resulted in the following resource counts:
 | Procedure | 327,659 |
 | **total** | **4,388,230** |
 
-That are 4,388,230 resources in 33 minutes and 29 seconds or about 2,200 resources per second on a 8 core machine.
+That are 4,388,230 resources in 30 minutes or about 2,400 resources per second on a 8 core machine.
 
-The size of the database directory after the import was 34 GiB and 8.4 GB after compaction.
+The size of the database directory after the import was 15 GiB and 9 GB after compaction.
 
 ### Other Test Systems
 

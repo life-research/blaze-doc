@@ -6,7 +6,7 @@ description: How to write and execute CQL queries
 
 ## Install the Quality Reporting UI
 
-The most accesible way to create and execute CQL queries is to use the Quality Reporting UI. The Quality Reporting UI is a desktop application which you can download it [here](https://github.com/samply/blaze-quality-reporting-ui).
+The most accesible way to create and execute CQL queries is to use the Quality Reporting UI. The Quality Reporting UI is a desktop application which you can download [here](https://github.com/samply/blaze-quality-reporting-ui).
 
 ## Run Blaze
 

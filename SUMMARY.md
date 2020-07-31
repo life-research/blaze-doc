@@ -12,4 +12,5 @@
 * [Implementation](implementation.md)
 * [Database Design](database-design.md)
 * [Importing Data](importing-data.md)
+* [CQL Queries](cql-queries.md)
 

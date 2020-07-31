@@ -57,7 +57,7 @@ The upload resulted in the following resource counts:
 | AllergyIntolerance | 5,360 |
 | CarePlan | 35,578 |
 | Claim | 522,122 |
-| Condition | 83,683
+| Condition | 83,683 |
 | DiagnosticReport | 145,727 |
 | Encounter | 408,512 |
 | ExplanationOfBenefit | 408,512 |

@@ -6,7 +6,7 @@ description: How to write and execute CQL queries
 
 ## Install the Quality Reporting UI
 
-The most accesible way to create and execute CQL queries is to use the Quality Reporting UI. The Quality Reporting UI is a desctop application which you can download [https://github.com/samply/blaze-quality-reporting-ui](https://github.com/samply/blaze-quality-reporting-ui).
+The most accesible way to create and execute CQL queries is to use the Quality Reporting UI. The Quality Reporting UI is a desktop application which you can download it [here](https://github.com/samply/blaze-quality-reporting-ui).
 
 ## Run Blaze
 
@@ -20,15 +20,15 @@ Start the Quality Reporting UI. You should see an empty measure list.
 
 ![](.gitbook/assets/screen-shot-2020-07-31-at-14.21.19.png)
 
-In the upper right corner, you see **Localhost 8080**. If Blaze runs on Localhost port 8080, you can coninue, otherwise you have to go into Settings and add your Blaze servers location.
+In the upper right corner, you see **Localhost 8080**. If Blaze runs on Localhost port 8080, you can continue, otherwise you have to go into Settings and add your Blaze servers location.
 
 ### Add Your Blaze Server
 
-Go into Settings and click on **Add**.
+Go into **Settings** and click on **Add**.
 
 ![](.gitbook/assets/screen-shot-2020-07-31-at-14.27.14.png)
 
-Enter a **Name** and a **URL**. Please be awarye that URLs of Blaze FHIR endpoints have the path /fhir in it by default. You can find your FHIR endpoint URl of Blaze in the logs in a line like this:
+Enter a **Name** and a **URL**. Please be aware that URLs of Blaze FHIR endpoints have the path `/fhir` in it by default. You can find your FHIR endpoint URL of Blaze in the logs in a line like this:
 
 ```text
 Init FHIR RESTful API with base URL: http://localhost:8080/fhir
@@ -36,11 +36,11 @@ Init FHIR RESTful API with base URL: http://localhost:8080/fhir
 
 ### Create Your First Library
 
-Blaze uses the FHIR [Quality Reporting](https://www.hl7.org/fhir/clinicalreasoning-quality-reporting.html) Module, to execute CQL queries. In Quality Reporting, CQL Query Expressions reside in [Library](https://www.hl7.org/fhir/library.html) resources and are referenced in [Measure](https://www.hl7.org/fhir/measure.html) resources. I order to create a Library resource, go to **Libraries** and click on **New Library**.
+Blaze uses the FHIR [Quality Reporting](https://www.hl7.org/fhir/clinicalreasoning-quality-reporting.html) Module, to execute CQL queries. In Quality Reporting, CQL Query Expressions reside in [Library](https://www.hl7.org/fhir/library.html) resources and are referenced in [Measure](https://www.hl7.org/fhir/measure.html) resources. In order to create a Library resource, go to **Libraries** and click on **New Library**.
 
 ![](.gitbook/assets/screen-shot-2020-07-31-at-14.36.03.png)
 
-After you created your Library you can give it a name by clicking at **Edit:**
+After you created your Library, you can give it a name by clicking at **Edit:**
 
 ![](.gitbook/assets/screen-shot-2020-07-31-at-14.39.38.png)
 
@@ -65,11 +65,11 @@ define InInitialPopulation:
 
 ### Create Your First Measure
 
-You can create Measure resources under Measures by clicking on New Measure. After giving our Measure a name, we also have to give it a canonical URL:
+You can create Measure resources under **Measures** by clicking on **New Measure**. After giving our Measure a name, we also have to give it a canonical URL:
 
 ![](.gitbook/assets/screen-shot-2020-07-31-at-15.13.20.png)
 
-After that we have to reference our previously created Library to our Measure by clicking on the **Edit** button in the right sidebar:
+After that, we have to reference our previously created Library to our Measure by clicking on the **Edit** button in the right sidebar:
 
 ![](.gitbook/assets/screen-shot-2020-07-31-at-15.17.05.png)
 
@@ -77,7 +77,7 @@ Because the Measure comes with an initial population definition by default, we w
 
 ![](.gitbook/assets/screen-shot-2020-07-31-at-15.26.08.png)
 
-Here we see our CQl expression **InInitialPopulation** from our Library referenced:
+Here we see our CQL expression **InInitialPopulation** from our Library referenced:
 
 ![](.gitbook/assets/screen-shot-2020-07-31-at-15.27.23.png)
 
@@ -91,7 +91,7 @@ After some time, a MeasureReport will apear in the list of reports of our Measur
 
 ![](.gitbook/assets/screen-shot-2020-07-31-at-15.32.06.png)
 
-Please be patient, because currently there is no progress bar. If nothing appears for a long time, you can use the menu to go back to all measure, open our measure again and look if ou see a report with an fitting timestamp.
+Please be patient, because currently there is no progress bar. If nothing appears for a long time, you can use the menu to go back to all measure, open our measure again and look if ou see a report with a fitting timestamp.
 
 All reports are persistet in Blaze and are shown in the UI with their creation timestamp.
 
@@ -101,7 +101,7 @@ After you open the report, you will see that your **initial-population** has a c
 
 ### Import Patients with COVID-19 Diagnoses
 
-If our POST the following Bundle to the transaction endpoint of Blaze, you will have two patients, one with a COVID-19 condition and one without:
+If you POST the following Bundle to the transaction endpoint of Blaze, you will have two patients, one with a COVID-19 condition and one without:
 
 ```text
 {
@@ -154,7 +154,7 @@ If our POST the following Bundle to the transaction endpoint of Blaze, you will 
 }
 ```
 
-After importing patient, the result of the initial population will be one:
+After importing patients, the result of the initial population will be one:
 
 ![](.gitbook/assets/screen-shot-2020-07-31-at-16.18.05.png)
 
